@@ -139,7 +139,7 @@ out
 
     ```bash
     aws stepfunctions start-execution \
-    --state-machine-arn "${STATEMACHINE_ARN=}" \
+    --state-machine-arn "${STATEMACHINE_ARN}" \
     --input file://testdata/statemachine_input.json
     ```
 
