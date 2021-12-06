@@ -1,6 +1,7 @@
 import { Duration } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import fs = require('fs');
 
 const memorySize = 128;
@@ -12,7 +13,7 @@ const timeout = 300;
  * @returns lambda.Function
  */
 function translateLambdaFunction(scope: Construct): lambda.Function {
-  return new lambda.Function(scope, 'TranslateLambdaFunction', {
+  const func = new lambda.Function(scope, 'TranslateLambdaFunction', {
     functionName: 'honyakutter-ts-translate-function',
     description: 'Translate text.',
     code: new lambda.AssetCode('./resources/lambdaFunctions/translate/bin/'),
@@ -21,6 +22,18 @@ function translateLambdaFunction(scope: Construct): lambda.Function {
     memorySize: memorySize,
     timeout: Duration.seconds(timeout),
   });
+
+  func.addToRolePolicy(new iam.PolicyStatement({
+    effect: iam.Effect.ALLOW,
+    actions: [
+      'translate:*',
+    ],
+    resources: [
+      '*',
+    ]
+  }));
+
+  return func;
 }
 
 /**

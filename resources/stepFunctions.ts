@@ -19,13 +19,13 @@ function translateTweetStateMaschine(scope: Construct, translateFunc: lambda.Fun
   });
 
   // Translate state
-  const translateResultSelector: resultSelectorItem[] = [
-    {key: 'inputText.$', value: '$.Payload'},
-  ];
+  const translateResultSelector: {[key:string]: string} = {
+    'inputText.$': '$.Payload'
+  };
   const translateState = lambdaFunctionToTask(scope, translateFunc, translateResultSelector)
 
   // Tweet state
-  const tweetState = lambdaFunctionToTask(scope, tweetFunc, [])
+  const tweetState = lambdaFunctionToTask(scope, tweetFunc, {})
 
   const definition = initState.next(translateState).next(tweetState);
 
@@ -37,12 +37,7 @@ function translateTweetStateMaschine(scope: Construct, translateFunc: lambda.Fun
   });
 }
 
-function lambdaFunctionToTask(scope: Construct, func: lambda.Function, resultSelectorItems: resultSelectorItem[]): tasks.LambdaInvoke {
-  const resultSelector = new Map<string, string>();
-  resultSelectorItems.forEach((item) => {
-    resultSelector.set(item.key, item.value);
-  });
-
+function lambdaFunctionToTask(scope: Construct, func: lambda.Function, resultSelector: {[key:string]: string}): tasks.LambdaInvoke {
   const props: tasks.LambdaInvokeProps = {
     lambdaFunction: func,
     invocationType: tasks.LambdaInvocationType.REQUEST_RESPONSE,
