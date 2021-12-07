@@ -3,6 +3,8 @@ honyakutter-ts
 
 This is an application that translates text entered in Japanese into English and tweets it, defined using AWS CDK v2 (TypeScript) and using AWS Step Functions to connect the translation and tweeting processes.
 
+![honyakutter-ts](./docs/images/2021-advent-calender.jpg)
+
 # Preparation
 
 1. Check your AWS CDK version.
