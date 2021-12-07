@@ -5,7 +5,7 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import fs = require('fs');
 
 const memorySize = 128;
-const timeout = 300;
+const timeout = 60;
 
 /**
  * Lambda function that translates text using Amazon Translate.
