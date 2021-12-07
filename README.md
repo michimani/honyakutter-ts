@@ -46,21 +46,6 @@ This is an application that translates text entered in Japanese into English and
     ```bash
     source .env
     ```
-
-# Build
-
-1. Build Translate Lambda Function
-
-    ```bash
-    make build-translate
-    ```
-
-1. Build Tweet Lambda Function
-
-    ```bash
-    make build-tweet
-    ```
-
 # Deploying
 
 1. bootstrap (If you haven't done so already)
@@ -72,7 +57,7 @@ This is an application that translates text entered in Japanese into English and
 1. Build Lambda functions
 
     ```bash
-    make build
+    make build-tweet
     ```
 
 1. Load environment values 
@@ -102,17 +87,6 @@ This is an application that translates text entered in Japanese into English and
 # Manual execution
 
 Execute Lambda functions and Step Functions state machine manually by using AWS CLI.. (The latest versions at the time of this writing are `v2.4.4` and `1.22.18`.)
-
-## Translate Lambda Function
-
-```bash
-aws lambda invoke \
---function-name honyakutter-ts-translate-function \
---invocation-type RequestResponse \
---region ap-northeast-1 \
---payload fileb://testdata/translate_lambda_payload.json \
-out && cat out
-```
 
 ## Tweet Lambda Function
 
