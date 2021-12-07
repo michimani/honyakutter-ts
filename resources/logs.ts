@@ -5,7 +5,9 @@ function StateMachineLogGroup(
   scope: Construct,
   groupName: string
 ): logs.LogGroup {
-  return new logs.LogGroup(scope, groupName);
+  return new logs.LogGroup(scope, "StateMachineLogGroup", {
+    logGroupName: groupName
+  });
 }
 
 export { StateMachineLogGroup };

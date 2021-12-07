@@ -45,7 +45,7 @@ function translateTweetStateMaschine(
 
   const logGroup = StateMachineLogGroup(
     scope,
-    "TranslateTweetStateMaschineLogGroup"
+    "TranslateTweetStateMachineLogGroup"
   );
   new stepfunctions.StateMachine(scope, "TranslateTweetStateMaschine", {
     stateMachineName: "honyakutter-ts-translate-tweet-state-maschine",

@@ -82,6 +82,7 @@ This is an application that translates text entered in Japanese into English and
 # Testing
 
 ```bash
+npm run test
 ```
 
 # Manual execution
