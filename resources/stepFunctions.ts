@@ -13,12 +13,12 @@ function translateTweetStateMaschine(
   tweetFunc: lambda.Function
 ) {
   const initState = new stepfunctions.Pass(scope, "init", {
-    comment: "init state"
+    comment: "init state",
   });
 
   // Translate state
   const translateResultSelector: { [key: string]: string } = {
-    "inputText.$": "$.TranslatedText"
+    "inputText.$": "$.TranslatedText",
   };
   const callAWSServiceProps: tasks.CallAwsServiceProps = {
     service: "Translate",
@@ -28,9 +28,9 @@ function translateTweetStateMaschine(
     parameters: {
       SourceLanguageCode: stepfunctions.JsonPath.stringAt("$.sourceLang"),
       TargetLanguageCode: stepfunctions.JsonPath.stringAt("$.targetLang"),
-      Text: stepfunctions.JsonPath.stringAt("$.inputText")
+      Text: stepfunctions.JsonPath.stringAt("$.inputText"),
     },
-    resultSelector: translateResultSelector
+    resultSelector: translateResultSelector,
   };
   const translateState = new tasks.CallAwsService(
     scope,
@@ -54,8 +54,8 @@ function translateTweetStateMaschine(
     definition: definition,
     logs: {
       destination: logGroup,
-      level: stepfunctions.LogLevel.ALL
-    }
+      level: stepfunctions.LogLevel.ALL,
+    },
   });
 }
 
@@ -68,7 +68,7 @@ function lambdaFunctionToTask(
     lambdaFunction: func,
     invocationType: tasks.LambdaInvocationType.REQUEST_RESPONSE,
     timeout: Duration.seconds(taskTimeout),
-    resultSelector: resultSelector
+    resultSelector: resultSelector,
   };
 
   return new tasks.LambdaInvoke(scope, func.functionName, props);

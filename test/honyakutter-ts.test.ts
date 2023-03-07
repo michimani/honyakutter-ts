@@ -26,9 +26,9 @@ test("Tweet Lambda function Created", () => {
         GOTWI_API_KEY: "twitter_api_key_for_test",
         GOTWI_API_KEY_SECRET: "twitter_api_key_secret_for_test",
         GOTWI_ACCESS_TOKEN: "twitter_access_token_for_test",
-        GOTWI_ACCESS_TOKEN_SECRET: "twitter_access_token_secret_for_test"
-      }
-    }
+        GOTWI_ACCESS_TOKEN_SECRET: "twitter_access_token_secret_for_test",
+      },
+    },
   });
 });
 
@@ -39,6 +39,6 @@ test("Step Functions state machine", () => {
 
   template.hasResourceProperties("AWS::StepFunctions::StateMachine", {
     StateMachineName: "honyakutter-ts-translate-tweet-state-maschine",
-    StateMachineType: "EXPRESS"
+    StateMachineType: "EXPRESS",
   });
 });

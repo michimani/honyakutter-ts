@@ -6,7 +6,7 @@ function StateMachineLogGroup(
   groupName: string
 ): logs.LogGroup {
   return new logs.LogGroup(scope, "StateMachineLogGroup", {
-    logGroupName: groupName
+    logGroupName: groupName,
   });
 }
 

@@ -23,8 +23,8 @@ function tweetLambdaFunction(scope: Construct): lambda.Function {
       GOTWI_API_KEY: process.env.TWITTER_API_KEY!,
       GOTWI_API_KEY_SECRET: process.env.TWITTER_API_KEY_SECRET!,
       GOTWI_ACCESS_TOKEN: process.env.TWITTER_ACCESS_TOKEN!,
-      GOTWI_ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET!
-    }
+      GOTWI_ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET!,
+    },
   });
 }
 
